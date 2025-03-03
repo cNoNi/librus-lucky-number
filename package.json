@@ -1,0 +1,18 @@
+{
+  "name": "librus-lucky-number",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.8.1",
+    "dotenv": "^16.4.7",
+    "librus-api": "^2.13.3",
+    "node-cron": "^3.0.3"
+  }
+}
