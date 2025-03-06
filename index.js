@@ -9,7 +9,7 @@ import fs from "fs";
 const { LOGIN, PASSWORD, CERT_PATH, API_URL } = process.env;
 
 if (!LOGIN || !PASSWORD || !CERT_PATH || !API_URL) {
-  console.error("❌ Missing environment variables. Check .env file.");
+  console.error("Missing environment variables. Check .env file.");
   process.exit(1);
 }
 
@@ -38,10 +38,15 @@ async function sendLuckyNumber() {
   }
 }
 
-// Initial execution
 (async () => {
   await sendLuckyNumber();
 })();
 
-// Schedule task at 7 AM every weekday (Monday to Friday)
-cron.schedule("0 7 * * 1-5", sendLuckyNumber);
+cron.schedule("0 7 * * 1-6", async () => {
+  console.log("Running scheduled task: Sending lucky number...");
+  await sendLuckyNumber();
+  console.log("Task completed.");
+}, {
+  scheduled: true,
+  timezone: "Europe/Warsaw"
+});
